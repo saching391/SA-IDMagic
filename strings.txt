@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">South African ID Magic</string>
+    <string name="hint_idnumber">Enter ID Number</string>
+    <string name="button1">ENTER</string>
+    <string name="dob">Date of Birth: </string>
+    <string name="gender">Gender: </string>
+    <string name="citizenship">Citizenship: </string>
+    <string name="slash">/</string>
+    <string name="newLine" />
+</resources>

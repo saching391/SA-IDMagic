@@ -1,0 +1,65 @@
+package com.example.southafricanidmagic;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etID;
+    Button btn;
+    TextView tvResults;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etID = findViewById(R.id.etID);
+        btn = findViewById(R.id.btn);
+        tvResults = findViewById(R.id.tvResults);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String idNumber = etID.getText().toString().trim();
+                String dob = idNumber.substring(0,6);
+                String dob_month = dob.substring(2,4);
+                String dob_day = dob.substring(4,6);
+                String dob_year = dob.substring(0,2);
+
+                int genderInd = Integer.parseInt(Character.toString(idNumber.charAt(6)));
+                String gender;
+                if (genderInd<5){
+                    gender = "Female";
+                }
+                else{
+                    gender = "Male";
+                }
+                int citizenInd = Integer.parseInt(Character.toString(idNumber.charAt(10)));
+                String citizen = "";
+                if (citizenInd==0){
+                    citizen = "SA Citizen";
+                }
+                else if (citizenInd==1){
+                    citizen = "Permanent Resident, Not Citizen";
+                }
+
+                String text = getString(R.string.dob) + " " + dob_month + getString(R.string.slash) + dob_day + getString(R.string.slash) + dob_year + "\n" +
+                        getString(R.string.gender) + " " + gender + "\n" +
+                        getString(R.string.citizenship) + " " + citizen;
+
+                tvResults.setText(text);
+            }
+        });
+
+
+
+
+    }
+}
